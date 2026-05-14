@@ -14,7 +14,11 @@
       "Bash(npm --version)",
       "Bash(npx expo *)",
       "Bash(npx create-expo-app *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(Remove-Item \"d:/secondry ssd/AAST/term6/adv AI/DeepFakeDetection/DeepFakeDetection/app.py\" -Force)",
+      "Bash(Remove-Item \"d:/secondry ssd/AAST/term6/adv AI/DeepFakeDetection/DeepFakeDetection/tempCodeRunnerFile.py\" -Force)",
+      "Bash(Write-Host \"Done\")",
+      "Bash(git add *)"
     ]
   }
 }
