@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#e2e0fc",
+              "on-secondary": "#003642",
+              "on-secondary-fixed": "#001f27",
+              "on-primary-fixed": "#1b1a26",
+              "on-tertiary": "#003921",
+              "on-tertiary-container": "#008e5b",
+              "on-surface-variant": "#c8c5cc",
+              "on-primary-container": "#7c7b89",
+              "surface-dim": "#111125",
+              "surface-container-lowest": "#0c0c1f",
+              "secondary-fixed": "#b4ebff",
+              background: "#111125",
+              "outline-variant": "#47464c",
+              "on-background": "#e2e0fc",
+              "primary-fixed": "#e3e0f1",
+              "surface-container-low": "#1a1a2e",
+              tertiary: "#00e293",
+              "surface-variant": "#333348",
+              "surface-bright": "#37374d",
+              "on-tertiary-fixed": "#002111",
+              secondary: "#a2e7ff",
+              "surface-container-highest": "#333348",
+              "on-surface": "#e2e0fc",
+              "on-secondary-container": "#005669",
+              "inverse-on-surface": "#2f2e43",
+              error: "#ffb4ab",
+              "primary-fixed-dim": "#c7c5d5",
+              surface: "#111125",
+              "primary-container": "#0f0f1a",
+              "surface-container-high": "#28283d",
+              primary: "#c7c5d5",
+              "inverse-primary": "#5e5d6b",
+              "surface-tint": "#c7c5d5",
+              "on-secondary-fixed-variant": "#004e5f",
+              "on-error": "#690005",
+              "tertiary-container": "#001409",
+              "surface-container": "#1e1e32",
+              "secondary-fixed-dim": "#3cd7ff",
+              "on-primary": "#302f3b",
+              "on-tertiary-fixed-variant": "#005232",
+              "on-primary-fixed-variant": "#464552",
+              "tertiary-fixed-dim": "#00e293",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#50ffaf",
+              "secondary-container": "#00d2fd",
+              outline: "#929096",
+              "error-container": "#93000a",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-tablet": "32px",
+              unit: "8px",
+              gutter: "24px",
+              "margin-desktop": "64px",
+              "margin-mobile": "16px",
+              "container-max-width": "1280px",
+            },
+            fontFamily: {
+              "headline-lg-mobile": ["Geist"],
+              "headline-xl": ["Geist"],
+              "headline-md": ["Geist"],
+              "body-md": ["Geist"],
+              "headline-lg": ["Geist"],
+              "body-lg": ["Geist"],
+              "label-md": ["Geist"],
+              "label-sm": ["Geist"],
+            },
+            fontSize: {
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "headline-xl": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.02em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0f0f1a;
+        background-image: radial-gradient(
+          circle at 2px 2px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 32px 32px;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .glow-cyan {
+        box-shadow: 0 0 15px rgba(162, 231, 255, 0.3);
+      }
+      .glow-success {
+        box-shadow: 0 0 15px rgba(0, 226, 147, 0.3);
+      }
+    </style>
+  </head>
+  <body class="font-body-md text-on-surface selection:bg-secondary/30">
+    <input type="file" id="fileInput" accept="image/*" class="hidden" />
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-surface/40 dark:bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(162,231,255,0.1)]"
+    >
+      <div
+        class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-20 max-w-container-max-width mx-auto"
+      >
+        <div class="flex items-center gap-4">
+          <img
+            alt="VERIFY_AI Logo"
+            class="h-10 w-10"
+            src="data:image/png;base64,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"
+          />
+          <span
+            class="font-headline-md text-headline-md font-bold tracking-tighter text-secondary"
+            >VERIFY_AI</span
+          >
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            class="text-secondary border-b-2 border-secondary pb-1 font-label-md text-label-md"
+            href="#"
+            >Upload</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main
+      class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto"
+    >
+      <!-- Hero Section -->
+      <section class="flex flex-col items-center text-center mb-16">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-secondary/10 border border-secondary/20 mb-6"
+        >
+          <span class="material-symbols-outlined text-[16px] text-secondary"
+            >verified_user</span
+          >
+          <span
+            class="font-label-sm text-label-sm text-secondary uppercase tracking-widest"
+            >Enterprise-Grade Forensic AI</span
+          >
+        </div>
+        <h1
+          class="font-headline-xl text-headline-xl mb-4 bg-gradient-to-r from-on-surface to-secondary bg-clip-text text-transparent"
+        >
+          Digital Integrity Verified.
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Deploy advanced neural forensic analysis to detect synthetic
+          manipulations in media. High-precision scanning for security
+          professionals.
+        </p>
+      </section>
+      <!-- Main Upload Interaction -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <!-- Upload Zone -->
+        <div class="lg:col-span-8">
+          <div
+            id="uploadZone"
+            class="glass-panel rounded-xl p-12 flex flex-col items-center justify-center min-h-[400px] border-2 border-dashed border-secondary/40 hover:border-secondary transition-all group cursor-pointer"
+          >
+            <div id="uploadPrompt" class="flex flex-col items-center">
+              <div
+                class="w-20 h-20 rounded-full bg-secondary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[48px] text-secondary"
+                  >monitoring</span
+                >
+              </div>
+              <h2 class="font-headline-md text-headline-md mb-2">
+                Drop a face image here or click to upload
+              </h2>
+              <p class="font-label-md text-label-md text-on-surface-variant mb-8">
+                Supports High-Resolution JPG, PNG (Max 25MB)
+              </p>
+            </div>
+            <img id="previewThumb" class="hidden max-h-48 rounded-lg mb-6 object-contain" alt="Preview" />
+            <div id="loadingSpinner" class="hidden flex-col items-center gap-3 mb-6">
+              <div class="w-10 h-10 border-2 border-secondary/30 border-t-secondary rounded-full animate-spin"></div>
+              <p class="font-label-md text-label-md text-secondary">Analyzing...</p>
+            </div>
+            <button
+              id="analyzeBtn"
+              class="px-12 py-4 bg-secondary-container text-on-secondary-fixed font-label-md text-label-md rounded-md glow-cyan hover:brightness-110 active:scale-95 transition-all uppercase tracking-widest font-bold"
+            >
+              Analyze File
+            </button>
+          </div>
+        </div>
+        <!-- Stats & Context Side Panel -->
+        <div class="lg:col-span-4 flex flex-col gap-gutter">
+          <div class="glass-panel rounded-xl p-6">
+            <span
+              class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-4"
+              >Verification Protocols</span
+            >
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span
+                  class="material-symbols-outlined text-secondary text-[20px]"
+                  >check_circle</span
+                >
+                <p class="font-label-md text-label-md">
+                  Neural Pattern Recognition
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="material-symbols-outlined text-secondary text-[20px]"
+                  >check_circle</span
+                >
+                <p class="font-label-md text-label-md">
+                  Frequency Domain Analysis
+                </p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="material-symbols-outlined text-secondary text-[20px]"
+                  >check_circle</span
+                >
+                <p class="font-label-md text-label-md">
+                  Artifact Consistency Check
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Features Bento Section -->
+      <section class="mt-24">
+        <h2 class="font-headline-lg text-headline-lg mb-12 text-center">
+          Multi-Layered Detection Engine
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-3xl mx-auto">
+          <div
+            class="glass-panel rounded-xl p-8 hover:bg-white/[0.06] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-secondary mb-4 text-[32px]"
+              >FilmStrip</span
+            >
+            <h4 class="font-headline-md text-headline-md mb-2">
+              Biometric Alignment
+            </h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Checks for physiological inconsistencies that AI often fails to
+              replicate correctly in facial rendering.
+            </p>
+          </div>
+          <div
+            class="glass-panel rounded-xl p-8 hover:bg-white/[0.06] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-secondary mb-4 text-[32px]"
+              >filter_center_focus</span
+            >
+            <h4 class="font-headline-md text-headline-md mb-2">
+              Pixel Attribution
+            </h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Tracing the source camera metadata and identifying GAN-generated
+              noise patterns at the pixel level.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Results Section -->
+      <section id="resultsSection" class="mt-16 hidden">
+        <h2 class="font-headline-lg text-headline-lg mb-8 text-center">Analysis Results</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-gutter">
+          <div class="glass-panel rounded-xl p-6">
+            <span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest block mb-4">Original Image</span>
+            <img id="originalImg" class="w-full rounded-lg object-cover" alt="Original" />
+          </div>
+          <div class="glass-panel rounded-xl p-6">
+            <span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest block mb-4">AI Attention Map (Grad-CAM)</span>
+            <img id="heatmapImg" class="w-full rounded-lg object-cover" alt="Heatmap" />
+          </div>
+        </div>
+        <div class="glass-panel rounded-xl p-10 text-center mt-gutter">
+          <p class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest mb-4">Forensic Verdict</p>
+          <div id="verdictBadge" class="inline-flex items-center gap-3 px-10 py-4 rounded-full mb-6">
+            <span class="material-symbols-outlined text-[28px]" id="verdictIcon"></span>
+            <span class="font-headline-lg text-headline-lg font-bold" id="verdictText"></span>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-1">Confidence Score</p>
+          <p class="font-headline-md text-headline-md mb-4" id="confidenceText"></p>
+          <div class="h-2 bg-white/10 rounded-full overflow-hidden max-w-sm mx-auto mb-8">
+            <div id="confidenceBar" class="h-full rounded-full transition-all duration-700" style="width:0%"></div>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+            The model focused on the highlighted regions to make its decision.
+          </p>
+          <button
+            id="resetBtn"
+            class="px-10 py-3 border border-secondary/40 rounded-md font-label-sm text-label-sm uppercase hover:bg-secondary/10 transition-colors tracking-widest"
+          >
+            Analyze Another Image
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-t border-white/10 relative w-full py-12"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop gap-8 max-w-container-max-width mx-auto"
+      >
+        <div class="flex flex-col gap-2">
+          <span
+            class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-widest"
+            >VERIFY_AI</span
+          >
+          <p class="font-label-sm text-label-sm text-on-surface-variant">
+            © 2024 DEEPFAKE DETECTOR LABS. ALL RIGHTS RESERVED.
+          </p>
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+            href="#"
+            >Documentation</a
+          >
+          <a
+            class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+            href="#"
+            >API Reference</a
+          >
+          <a
+            class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+            href="#"
+            >Terms of Service</a
+          >
+        </div>
+        <div class="flex gap-4">
+          <div
+            class="w-10 h-10 rounded-md glass-panel flex items-center justify-center hover:text-secondary transition-colors cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-[20px]">share</span>
+          </div>
+          <div
+            class="w-10 h-10 rounded-md glass-panel flex items-center justify-center hover:text-secondary transition-colors cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-[20px]">mail</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script>
+    const fileInput      = document.getElementById('fileInput');
+    const uploadZone     = document.getElementById('uploadZone');
+    const analyzeBtn     = document.getElementById('analyzeBtn');
+    const uploadPrompt   = document.getElementById('uploadPrompt');
+    const previewThumb   = document.getElementById('previewThumb');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const resultsSection = document.getElementById('resultsSection');
+    const originalImg    = document.getElementById('originalImg');
+    const heatmapImg     = document.getElementById('heatmapImg');
+    const verdictBadge   = document.getElementById('verdictBadge');
+    const verdictIcon    = document.getElementById('verdictIcon');
+    const verdictText    = document.getElementById('verdictText');
+    const confidenceText = document.getElementById('confidenceText');
+    const confidenceBar  = document.getElementById('confidenceBar');
+    const resetBtn       = document.getElementById('resetBtn');
+
+    let selectedFile = null;
+
+    // Open file picker when zone is clicked (but not when button is clicked)
+    uploadZone.addEventListener('click', () => fileInput.click());
+    analyzeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!selectedFile) { fileInput.click(); return; }
+      runAnalysis();
+    });
+
+    // File selected via picker
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) selectFile(e.target.files[0]);
+    });
+
+    // Drag & drop
+    uploadZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadZone.classList.add('border-secondary');
+    });
+    uploadZone.addEventListener('dragleave', () => {
+      uploadZone.classList.remove('border-secondary');
+    });
+    uploadZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadZone.classList.remove('border-secondary');
+      const f = e.dataTransfer.files[0];
+      if (f && f.type.startsWith('image/')) selectFile(f);
+    });
+
+    function selectFile(file) {
+      selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        originalImg.src = e.target.result;
+        previewThumb.src = e.target.result;
+        uploadPrompt.classList.add('hidden');
+        previewThumb.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function runAnalysis() {
+      if (!selectedFile) return;
+
+      // Show spinner, hide button
+      analyzeBtn.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
+      loadingSpinner.classList.add('flex');
+      resultsSection.classList.add('hidden');
+
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      try {
+        const res  = await fetch('/predict', { method: 'POST', body: formData });
+        if (!res.ok) throw new Error('Server error ' + res.status);
+        const data = await res.json();
+
+        heatmapImg.src = 'data:image/jpeg;base64,' + data.heatmap;
+
+        const isFake = data.prediction === 'FAKE';
+        verdictIcon.textContent  = isFake ? 'dangerous'     : 'verified';
+        verdictText.textContent  = data.prediction;
+        verdictBadge.className   = `inline-flex items-center gap-3 px-10 py-4 rounded-full mb-6 border ${
+          isFake
+            ? 'bg-red-500/20 text-red-400 border-red-500/40'
+            : 'bg-tertiary/20 text-tertiary border-tertiary/40'
+        }`;
+
+        confidenceText.textContent = data.confidence.toFixed(1) + '%';
+        confidenceBar.style.width  = data.confidence + '%';
+        confidenceBar.className    = `h-full rounded-full transition-all duration-700 ${
+          isFake ? 'bg-red-400' : 'bg-tertiary'
+        }`;
+
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        alert('Analysis failed: ' + err.message + '\n\nMake sure the backend is running on http://localhost:8000');
+      } finally {
+        loadingSpinner.classList.add('hidden');
+        loadingSpinner.classList.remove('flex');
+        analyzeBtn.classList.remove('hidden');
+      }
+    }
+
+    resetBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileInput.value = '';
+      resultsSection.classList.add('hidden');
+      previewThumb.classList.add('hidden');
+      uploadPrompt.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  </body>
+</html>

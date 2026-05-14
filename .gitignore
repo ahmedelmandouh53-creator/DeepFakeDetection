@@ -1,0 +1,7 @@
+﻿DeepFakeDetection/checkpoints/
+DeepFakeDetection/dataset/
+DeepFakeDetection/__pycache__/
+DeepFakeDetection/web/mobile/node_modules/
+*.pth
+*.pyc
+.env

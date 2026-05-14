@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:\\\\Users\\\\ahmed\\\\AppData\\\\Local\\\\Python\\\\bin\\\\python.exe\" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000)",
+      "Read(//tmp/**)",
+      "Bash(\"C:/Python314/python.exe\" -c \"import sys; print\\(sys.executable, sys.version\\)\")",
+      "Bash(\"C:/Python314/python.exe\" -c \"import uvicorn, fastapi; print\\('has web stack'\\)\")",
+      "Bash(\"C:/Python314/python.exe\" -c \"import pytorch_grad_cam; print\\('has gradcam'\\)\")",
+      "Bash(\"C:/Python314/python.exe\" -m pip install fastapi uvicorn python-multipart pytorch-grad-cam)",
+      "Bash(\"C:/Python314/python.exe\" -m pip install fastapi uvicorn python-multipart grad-cam)",
+      "Bash(\"C:/Python314/python.exe\" -c \"import torch, pytorch_grad_cam, fastapi, uvicorn; print\\('all good'\\)\")",
+      "Bash(where node *)",
+      "Bash(where npm *)",
+      "Bash(npm --version)",
+      "Bash(npx expo *)",
+      "Bash(npx create-expo-app *)",
+      "Bash(npm install *)"
+    ]
+  }
+}
