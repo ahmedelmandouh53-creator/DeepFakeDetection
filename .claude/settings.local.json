@@ -18,7 +18,9 @@
       "Bash(Remove-Item \"d:/secondry ssd/AAST/term6/adv AI/DeepFakeDetection/DeepFakeDetection/app.py\" -Force)",
       "Bash(Remove-Item \"d:/secondry ssd/AAST/term6/adv AI/DeepFakeDetection/DeepFakeDetection/tempCodeRunnerFile.py\" -Force)",
       "Bash(Write-Host \"Done\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
